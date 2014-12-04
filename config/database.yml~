@@ -30,7 +30,7 @@ development:
   encoding: utf8
   database: basedatos
   username: postgres
-  password: 123456
+  password: my_db_password
   pool: 5 # not mandatory
   timeout: 5000 # not mandatory
   host: localhost
