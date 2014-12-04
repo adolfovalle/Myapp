@@ -8,12 +8,12 @@ def index
   		config.access_token        = "2891572623-whlhrrDQbyVWbNimTZ6rR8hVRHV245rNSa0N0ST"
   		config.access_token_secret = "m96nlSAT5BRyxbk3oXR8Pef49lQINiWk4Yr9O3a2ughpJ"
 	end
-	topics = ["Aborto", "No al aborto"]
+	topics = ["Aborto", "AbortoLegal", "SíAlAborto", "YoDecido", "ProAborto", "abortoChile", "AbortoTerapéutico", "AbortoTerapéuticoYA", "NoAlAborto", "MarchaPorLaVida", "SíALaVida", "Noalaborto"]
 	contador = 0
 	@tweets = []	
 	client.filter(:track => topics.join(",")) do |object|
 		contador += 1
-		if contador > 10
+		if contador > 2
 			break
   		else
   			puts object.text if object.is_a?(Twitter::Tweet)
