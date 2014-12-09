@@ -23,7 +23,7 @@ def index
 				@tweets.push object.text if object.is_a?(Twitter::Tweet)
 			  	@tweets.push object.user.name if object.is_a?(Twitter::Tweet)
 				@tweets.push "\n Nombre cuenta (Nick):#{object.user.screen_name}\n"
- 				@tweets.push "Localizacion usuario :--> *** #{object.user.location} *** \n "
+				@tweets.image_tag("http://img1.wikia.nocookie.net/__cb20111228065136/simpsons/images/1/11/Twitter_bird_icon.png", :size => "10x10", :crop => :fill)  
 			end
 		end
 	end

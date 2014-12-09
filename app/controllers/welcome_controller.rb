@@ -23,6 +23,7 @@ def index
 				@tweets.push object.text if object.is_a?(Twitter::Tweet)
 			  	@tweets.push object.user.name if object.is_a?(Twitter::Tweet)
 				@tweets.push "\n Nombre cuenta (Nick):#{object.user.screen_name}\n"
+				
 			end
 		end
 	end
