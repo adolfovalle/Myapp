@@ -1,0 +1,6 @@
+rails g scaffold usuario id_usuario:text nombre:text contador_seguidores:integer
+
+rails g scaffold tweet id_tweet:text mensaje:text contador_retweet:integer fecha:timestap
+
+rails g scaffold post id_tweet:text id_usuario:text fecha:timestap
+

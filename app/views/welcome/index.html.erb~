@@ -1,8 +1,11 @@
-<h1>Welcome#index</h1>
-<h1>Hello, Rails!</h1>
+<h1>Twits sobre el aborto en este momento</h1>
+link_to "Tweet", tweet_view_path
+# => <a href="/tweet">Tweet</a>
 
 <% @tweets.each do |element| %>
   <tr>
-  <li><%= element %></li>
+  <li>
+	<%= element %></li>
   </tr>
 <% end %>
+
