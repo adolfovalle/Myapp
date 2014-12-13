@@ -1,0 +1,29 @@
+<h1>Listing hastags</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id hastag</th>
+      <th>Etiqueta</th>
+      <th>Intencion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hastags.each do |hastag| %>
+      <tr>
+        <td><%= hastag.id_hastag %></td>
+        <td><%= hastag.etiqueta %></td>
+        <td><%= hastag.intencion %></td>
+        <td><%= link_to 'Show', hastag %></td>
+        <td><%= link_to 'Edit', edit_hastag_path(hastag) %></td>
+        <td><%= link_to 'Destroy', hastag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Hastag', new_hastag_path %>

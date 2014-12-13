@@ -1,0 +1,11 @@
+rails destroy scaffold usuario
+rails destroy model usuario
+
+rails destroy scaffold tweet
+rails destroy model tweet
+
+rails destroy scaffold tweets_palabra
+rails destroy model tweets_palabra
+
+rails destroy scaffold tweets_hastag
+rails destroy model tweets_hastag

@@ -1,0 +1,29 @@
+<%= form_for(@hastag) do |f| %>
+  <% if @hastag.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hastag.errors.count, "error") %> prohibited this hastag from being saved:</h2>
+
+      <ul>
+      <% @hastag.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :id_hastag %><br>
+    <%= f.text_area :id_hastag %>
+  </div>
+  <div class="field">
+    <%= f.label :etiqueta %><br>
+    <%= f.text_area :etiqueta %>
+  </div>
+  <div class="field">
+    <%= f.label :intencion %><br>
+    <%= f.text_area :intencion %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

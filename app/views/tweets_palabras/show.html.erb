@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id tweet:</strong>
+  <%= @tweets_palabra.id_tweet %>
+</p>
+
+<p>
+  <strong>Id palabra:</strong>
+  <%= @tweets_palabra.id_palabra %>
+</p>
+
+<%= link_to 'Edit', edit_tweets_palabra_path(@tweets_palabra) %> |
+<%= link_to 'Back', tweets_palabras_index_path %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id palabra:</strong>
+  <%= @palabraclafe.id_palabra %>
+</p>
+
+<p>
+  <strong>Id tweet palabra:</strong>
+  <%= @palabraclafe.id_tweet_palabra %>
+</p>
+
+<p>
+  <strong>Palabra tweet:</strong>
+  <%= @palabraclafe.palabra_tweet %>
+</p>
+
+<p>
+  <strong>Intencion:</strong>
+  <%= @palabraclafe.intencion %>
+</p>
+
+<%= link_to 'Edit', edit_palabraclafe_path(@palabraclafe) %> |
+<%= link_to 'Back', palabraclaves_path %>

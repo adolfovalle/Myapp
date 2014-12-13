@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id hastag:</strong>
+  <%= @hastag.id_hastag %>
+</p>
+
+<p>
+  <strong>Etiqueta:</strong>
+  <%= @hastag.etiqueta %>
+</p>
+
+<p>
+  <strong>Intencion:</strong>
+  <%= @hastag.intencion %>
+</p>
+
+<%= link_to 'Edit', edit_hastag_path(@hastag) %> |
+<%= link_to 'Back', hastags_path %>

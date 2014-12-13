@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_tweet: MyText
+  id_palabra: MyText
+
+two:
+  id_tweet: MyText
+  id_palabra: MyText

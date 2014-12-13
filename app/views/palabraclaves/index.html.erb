@@ -1,0 +1,31 @@
+<h1>Listing palabraclaves</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id palabra</th>
+      <th>Id tweet palabra</th>
+      <th>Palabra tweet</th>
+      <th>Intencion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @palabraclaves.each do |palabraclafe| %>
+      <tr>
+        <td><%= palabraclafe.id_palabra %></td>
+        <td><%= palabraclafe.id_tweet_palabra %></td>
+        <td><%= palabraclafe.palabra_tweet %></td>
+        <td><%= palabraclafe.intencion %></td>
+        <td><%= link_to 'Show', palabraclafe %></td>
+        <td><%= link_to 'Edit', edit_palabraclafe_path(palabraclafe) %></td>
+        <td><%= link_to 'Destroy', palabraclafe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Palabraclave', new_palabraclafe_path %>

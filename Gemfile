@@ -40,3 +40,10 @@ gem 'spring',        group: :development
 
 gem 'twitter'
 
+gem "therubyracer"
+gem "less-rails"
+gem "twitter-bootstrap-rails"
+
+
+
+

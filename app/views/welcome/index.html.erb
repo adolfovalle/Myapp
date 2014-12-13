@@ -1,8 +1,11 @@
-<h1>Welcome#index</h1>
-<h1>Hello, Rails!</h1>
+<h1>Twits sobre el aborto</h1>
+<!--<a href="/tweet/view">Tweet</a>--> 
 
 <% @tweets.each do |element| %>
   <tr>
-  <li><%= element %></li>
+  <li>
+	<%= element %>
+	<%= image_tag("http://img1.wikia.nocookie.net/__cb20111228065136/simpsons/images/1/11/Twitter_bird_icon.png", :size => "10x10", :crop => :fill)  %></li>
   </tr>
 <% end %>
+

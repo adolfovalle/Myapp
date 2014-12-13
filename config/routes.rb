@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  resources :hastags
+
+  resources :tweets
+
+  resources :tweets_palabras
+
+  resources :tweets_hastags
+
+  resources :palabraclaves
+
+  resources :usuarios
+
+  get 'tweet/view'
+
   get 'welcome/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
