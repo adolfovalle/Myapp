@@ -18,7 +18,7 @@ class TweetsControllerTest < ActionController::TestCase
 
   test "should create tweet" do
     assert_difference('Tweet.count') do
-      post :create, tweet: { fecha: @tweet.fecha, id_tweet: @tweet.id_tweet, id_usuario: @tweet.id_usuario, mensaje: @tweet.mensaje, retweet_contador: @tweet.retweet_contador }
+      post :create, tweet: { fecha: @tweet.fecha, id_tweet: @tweet.id_tweet, mensaje: @tweet.mensaje, retweet_contador: @tweet.retweet_contador }
     end
 
     assert_redirected_to tweet_path(assigns(:tweet))
@@ -35,7 +35,7 @@ class TweetsControllerTest < ActionController::TestCase
   end
 
   test "should update tweet" do
-    patch :update, id: @tweet, tweet: { fecha: @tweet.fecha, id_tweet: @tweet.id_tweet, id_usuario: @tweet.id_usuario, mensaje: @tweet.mensaje, retweet_contador: @tweet.retweet_contador }
+    patch :update, id: @tweet, tweet: { fecha: @tweet.fecha, id_tweet: @tweet.id_tweet, mensaje: @tweet.mensaje, retweet_contador: @tweet.retweet_contador }
     assert_redirected_to tweet_path(assigns(:tweet))
   end
 

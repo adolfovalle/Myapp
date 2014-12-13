@@ -2,14 +2,12 @@
 
 one:
   id_tweet: MyText
-  id_usuario: MyText
   mensaje: MyText
   retweet_contador: 1
-  fecha: 2014-12-12 23:54:14
+  fecha: 2014-12-13 10:47:47
 
 two:
   id_tweet: MyText
-  id_usuario: MyText
   mensaje: MyText
   retweet_contador: 1
-  fecha: 2014-12-12 23:54:14
+  fecha: 2014-12-13 10:47:47

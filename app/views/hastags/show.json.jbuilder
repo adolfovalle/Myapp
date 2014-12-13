@@ -1,1 +1,1 @@
-json.extract! @hastag, :id, :id_hastag, :etiqueta, :intencion, :created_at, :updated_at
+json.extract! @hastag, :id, :etiqueta, :intencion, :created_at, :updated_at

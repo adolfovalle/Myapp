@@ -1,1 +1,1 @@
-json.extract! @tweet, :id, :id_tweet, :id_usuario, :mensaje, :retweet_contador, :fecha, :created_at, :updated_at
+json.extract! @tweet, :id, :id_tweet, :mensaje, :retweet_contador, :fecha, :created_at, :updated_at

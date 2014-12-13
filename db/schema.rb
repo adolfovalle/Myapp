@@ -11,31 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141213025428) do
+ActiveRecord::Schema.define(version: 20141213171456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "hastags", force: true do |t|
-    t.text     "id_hastag"
     t.text     "etiqueta"
     t.text     "intencion"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "palabraclaves", force: true do |t|
-    t.text     "id_palabra"
-    t.text     "id_tweet_palabra"
-    t.text     "palabra_tweet"
-    t.text     "intencion"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "hastags_tweets", force: true do |t|
+    t.integer "tweet_id"
+    t.integer "hastag_id"
   end
 
   create_table "tweets", force: true do |t|
     t.text     "id_tweet"
-    t.text     "id_usuario"
+    t.integer  "usuario_id"
     t.text     "mensaje"
     t.integer  "retweet_contador"
     t.datetime "fecha"
@@ -43,18 +38,7 @@ ActiveRecord::Schema.define(version: 20141213025428) do
     t.datetime "updated_at"
   end
 
-  create_table "tweets_hastags", id: false, force: true do |t|
-    t.text     "id_tweet"
-    t.text     "id_hastag"
-    t.integer  "tweet_id"
-    t.integer  "hastag_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "tweets_palabras", id: false, force: true do |t|
-    t.text     "id_tweet"
-    t.text     "id_palabra"
     t.integer  "tweet_id"
     t.integer  "palabraclave_id"
     t.datetime "created_at"

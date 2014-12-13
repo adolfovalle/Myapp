@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
   resources :hastags
 
-  resources :tweets
+  resources :hastags_tweets
 
   resources :tweets_palabras
 
-  resources :tweets_hastags
-
-  resources :palabraclaves
+  resources :tweets
 
   resources :usuarios
 

@@ -1,4 +1,4 @@
 class Usuario < ActiveRecord::Base
-	has_many :tweets, dependent: :destroy
+	has_many :tweets, :dependent => :destroy	
 end
 

@@ -4,7 +4,6 @@
   <thead>
     <tr>
       <th>Id tweet</th>
-      <th>Id usuario</th>
       <th>Mensaje</th>
       <th>Retweet contador</th>
       <th>Fecha</th>
@@ -16,7 +15,6 @@
     <% @tweets.each do |tweet| %>
       <tr>
         <td><%= tweet.id_tweet %></td>
-        <td><%= tweet.id_usuario %></td>
         <td><%= tweet.mensaje %></td>
         <td><%= tweet.retweet_contador %></td>
         <td><%= tweet.fecha %></td>

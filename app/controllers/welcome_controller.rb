@@ -1,5 +1,6 @@
+#encoding: utf-8
 class WelcomeController < ApplicationController
-
+#encoding: utf-8
 def index
   	require 'twitter'
 	client = Twitter::REST::Client.new do |config|
@@ -13,8 +14,8 @@ def index
 	contador = 0
 	@tweets = []	
 	a = ["perro","batman"]
-	a.each do |i|
-		client.search(i, :result_type => "recent").take(20).collect do |object|
+	topics.each do |i|
+		client.search(i, :result_type => "recent").take(2).collect do |object|
 			if object != nil
 				contador += 1		
 				puts object.text if object.is_a?(Twitter::Tweet)
@@ -24,6 +25,66 @@ def index
 			  	@tweets.push object.user.name if object.is_a?(Twitter::Tweet)
 				@tweets.push "\n Nombre cuenta (Nick):#{object.user.screen_name}\n"
 				
+
+
+@tweet = Tweet.create({
+
+			#TWEET
+
+			:id_tweet=>object.id,
+		
+			:mensaje=>object.text ,
+			:retweet_contador=>object.retweet_count,
+			:fecha=>object.created_at,
+
+		});
+
+
+aux_tweet = Tweet.find_by_id_tweet(object.id.to_s)
+		@hash =[]
+		object.hashtags.each do |hastag|
+		if Hastag.find_by_etiqueta(hastag.text).nil?
+
+			else if Hastag.find_by_etiqueta(hastag.text).etiqueta.downcase == hastag.text.downcase
+				@hashtag = Hastag.find_by_etiqueta(hastag.text)	
+			aux_tweet.hastags << @hashtag		
+			else end
+			end
+		end
+
+if Usuario.exists?(:id_usuario => object.user.id.to_s)== true
+
+aux_usuario=Usuario.find_by_id_usuario(object.user.id.to_s)
+aux_usuario.tweets << @tweet
+			
+		else
+			if object.user.name.nil?
+				aux_name = " "
+			else
+				aux_name = object.user.name
+			end
+			if object.user.description.nil?
+				aux_description = " "
+			else
+				aux_description = object.user.description
+			end
+			@usuario = Usuario.create({
+				#USUARIO
+				:id_usuario=> object.user.id.to_s,
+				:nombre => aux_name ,  
+				:nick  => object.user.screen_name ,
+				:descripcion => aux_description,
+				:contador_seguidores =>object.user.followers_count
+			});
+			#@usuario.save();
+			aux_usuario = Usuario.find_by_id_usuario(object.user.id.to_s)
+			aux_usuario.tweets << @tweet
+		end
+
+#hsdjhsfdjhfdjhfdfsdgfdgfgj
+
+
+
 			end
 		end
 	end

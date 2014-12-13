@@ -69,6 +69,6 @@ class TweetsPalabrasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tweets_palabra_params
-      params.require(:tweets_palabra).permit(:id_tweet, :id_palabra)
+      params[:tweets_palabra]
     end
 end

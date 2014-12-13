@@ -69,6 +69,6 @@ class HastagsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hastag_params
-      params.require(:hastag).permit(:id_hastag, :etiqueta, :intencion)
+      params.require(:hastag).permit(:etiqueta, :intencion)
     end
 end

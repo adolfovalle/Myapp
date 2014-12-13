@@ -1,0 +1,8 @@
+class CreateTweetsPalabras < ActiveRecord::Migration
+  def change
+    create_table :tweets_palabras do |t|
+
+      t.timestamps
+    end
+  end
+end

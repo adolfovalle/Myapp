@@ -18,7 +18,7 @@ class HastagsControllerTest < ActionController::TestCase
 
   test "should create hastag" do
     assert_difference('Hastag.count') do
-      post :create, hastag: { etiqueta: @hastag.etiqueta, id_hastag: @hastag.id_hastag, intencion: @hastag.intencion }
+      post :create, hastag: { etiqueta: @hastag.etiqueta, intencion: @hastag.intencion }
     end
 
     assert_redirected_to hastag_path(assigns(:hastag))
@@ -35,7 +35,7 @@ class HastagsControllerTest < ActionController::TestCase
   end
 
   test "should update hastag" do
-    patch :update, id: @hastag, hastag: { etiqueta: @hastag.etiqueta, id_hastag: @hastag.id_hastag, intencion: @hastag.intencion }
+    patch :update, id: @hastag, hastag: { etiqueta: @hastag.etiqueta, intencion: @hastag.intencion }
     assert_redirected_to hastag_path(assigns(:hastag))
   end
 
