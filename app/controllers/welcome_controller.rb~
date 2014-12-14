@@ -39,18 +39,31 @@ def index
 
 		});
 
-
+##HASHTAGGGG
 aux_tweet = Tweet.find_by_id_tweet(object.id.to_s)
-		@hash =[]
-		object.hashtags.each do |hastag|
-		if Hastag.find_by_etiqueta(hastag.text).nil?
+		hash = Hastag.all
+		pal = Palabra.all
+                hash.each do |x|
+		aux =x.etiqueta.downcase
+               puts"######################################################"
+		puts aux
 
-			else if Hastag.find_by_etiqueta(hastag.text).etiqueta.downcase== hastag.text.downcase
-				@hashtag = Hastag.find_by_etiqueta(hastag.text)	
-			aux_tweet.hastags << @hashtag		
-			else end
-			end
+		object.hashtags.each do |hastag|
+puts hastag.text.downcase
+                puts aux.include?hastag.text.downcase
+               puts"######################################################"
+		if aux.include?hastag.text.downcase
+                   tag=Hastag.find_by_etiqueta(x.etiqueta)
+                   @tweet.hastags << tag
 		end
+		end
+end
+
+
+#####PALABRAAAA
+#HACERPENDIENTE
+
+
 
 if Usuario.exists?(:id_usuario => object.user.id.to_s)== true
 

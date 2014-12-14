@@ -1,0 +1,25 @@
+<%= form_for(@palabra) do |f| %>
+  <% if @palabra.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@palabra.errors.count, "error") %> prohibited this palabra from being saved:</h2>
+
+      <ul>
+      <% @palabra.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :palabrac %><br>
+    <%= f.text_area :palabrac %>
+  </div>
+  <div class="field">
+    <%= f.label :intencionp %><br>
+    <%= f.text_area :intencionp %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

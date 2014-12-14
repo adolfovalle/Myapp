@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  resources :palabras
+
+  resources :palabras_tweets
+
   resources :hastags
 
   resources :hastags_tweets
-
-  resources :tweets_palabras
 
   resources :tweets
 

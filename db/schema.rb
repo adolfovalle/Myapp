@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141213171456) do
+ActiveRecord::Schema.define(version: 20141213182536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,19 +28,24 @@ ActiveRecord::Schema.define(version: 20141213171456) do
     t.integer "hastag_id"
   end
 
+  create_table "palabras", force: true do |t|
+    t.text     "palabrac"
+    t.text     "intencionp"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "palabras_tweets", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tweets", force: true do |t|
     t.text     "id_tweet"
     t.integer  "usuario_id"
     t.text     "mensaje"
     t.integer  "retweet_contador"
     t.datetime "fecha"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "tweets_palabras", id: false, force: true do |t|
-    t.integer  "tweet_id"
-    t.integer  "palabraclave_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

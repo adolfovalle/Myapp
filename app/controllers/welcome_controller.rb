@@ -10,10 +10,10 @@ def index
   		config.access_token_secret = "m96nlSAT5BRyxbk3oXR8Pef49lQINiWk4Yr9O3a2ughpJ"
 	end
 	topics = ["Aborto", "AbortoLegal", "SíAlAborto", "YoDecido", "ProAborto", "abortoChile", "AbortoTerapéutico", "AbortoTerapéuticoYA", "NoAlAborto", 			  "MarchaPorLaVida", "SíALaVida", "Noalaborto"]
-	topics2 = ["Batman", "USA", "Hola"]
+	#topics2 = ["Batman", "USA", "Hola"]
 	contador = 0
 	@tweets = []	
-	a = ["perro","batman"]
+	#a = ["perro","batman"]
 	topics.each do |i|
 		client.search(i, :result_type => "recent").take(2).collect do |object|
 			if object != nil
@@ -39,18 +39,31 @@ def index
 
 		});
 
-
+##HASHTAGGGG
 aux_tweet = Tweet.find_by_id_tweet(object.id.to_s)
-		@hash =[]
-		object.hashtags.each do |hastag|
-		if Hastag.find_by_etiqueta(hastag.text).nil?
+		hash = Hastag.all
+		pal = Palabra.all
+                hash.each do |x|
+		aux =x.etiqueta.downcase
+               puts"######################################################"
+		puts aux
 
-			else if Hastag.find_by_etiqueta(hastag.text).etiqueta.downcase == hastag.text.downcase
-				@hashtag = Hastag.find_by_etiqueta(hastag.text)	
-			aux_tweet.hastags << @hashtag		
-			else end
-			end
+		object.hashtags.each do |hastag|
+puts hastag.text.downcase
+                puts aux.include?hastag.text.downcase
+               puts"######################################################"
+		if aux.include?hastag.text.downcase
+                   tag=Hastag.find_by_etiqueta(x.etiqueta)
+                   @tweet.hastags << tag
 		end
+		end
+end
+
+
+#####PALABRAAAA
+#HACERPENDIENTE
+
+
 
 if Usuario.exists?(:id_usuario => object.user.id.to_s)== true
 

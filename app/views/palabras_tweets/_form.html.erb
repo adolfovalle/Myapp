@@ -1,0 +1,17 @@
+<%= form_for(@palabras_tweet) do |f| %>
+  <% if @palabras_tweet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@palabras_tweet.errors.count, "error") %> prohibited this palabras_tweet from being saved:</h2>
+
+      <ul>
+      <% @palabras_tweet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

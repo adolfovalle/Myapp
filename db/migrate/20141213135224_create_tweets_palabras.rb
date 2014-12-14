@@ -1,9 +1,0 @@
-class CreateTweetsPalabras < ActiveRecord::Migration
-  def change
-    create_table :tweets_palabras, :id => false do |t|
-      t.references 'tweet'
-      t.references 'palabraclave'
-      t.timestamps
-    end
-  end
-end

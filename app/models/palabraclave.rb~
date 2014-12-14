@@ -1,4 +1,2 @@
 class Palabraclave < ActiveRecord::Base
-	has_and_belongs_to_many :tweets
-	attr_accessible :id_palabra, :palabra, :intencion
 end
