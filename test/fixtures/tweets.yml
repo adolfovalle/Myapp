@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_tweet: MyText
+  mensaje: MyText
+  retweet_contador: 1
+  fecha: 2014-12-15 03:08:22
+  lat: 1.5
+  long: 1.5
+  sentimiento: MyText
+
+two:
+  id_tweet: MyText
+  mensaje: MyText
+  retweet_contador: 1
+  fecha: 2014-12-15 03:08:22
+  lat: 1.5
+  long: 1.5
+  sentimiento: MyText

@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  resources :palabras
+
+  resources :palabras_tweets
+
+  resources :hastags
+
+  resources :hastags_tweets
+
+  resources :tweets
+
+  resources :usuarios
+
   get 'tweet/view'
 
   get 'welcome/index'

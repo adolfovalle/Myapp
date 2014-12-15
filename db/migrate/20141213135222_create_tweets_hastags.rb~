@@ -1,0 +1,8 @@
+class CreateTweetsHastags < ActiveRecord::Migration
+  def change
+    create_table :tweets_hastags do |t|
+
+      t.timestamps
+    end
+  end
+end

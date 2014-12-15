@@ -39,11 +39,14 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'twitter'
-
+gem 'groupdate'
 gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
-
-
+gem "chartkick"
+gem "active_median"
+gem 'hightop'
+gem 'gmaps4rails'
+gem 'geocoder'
 
 

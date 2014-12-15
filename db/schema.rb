@@ -11,19 +11,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141206003957) do
+ActiveRecord::Schema.define(version: 20141215060822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "hastags", force: true do |t|
+    t.text     "etiqueta"
+    t.text     "intencion"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "hastags_tweets", force: true do |t|
+    t.integer "tweet_id"
+    t.integer "hastag_id"
+  end
+
+  create_table "palabras", force: true do |t|
+    t.text     "palabrac"
+    t.text     "intencionp"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "palabras_tweets", force: true do |t|
+    t.integer "tweet_id"
+    t.integer "palabra_id"
+  end
+
+  create_table "tweets", force: true do |t|
+    t.text     "id_tweet"
+    t.integer  "usuario_id"
+    t.text     "mensaje"
+    t.integer  "retweet_contador"
+    t.datetime "fecha"
+    t.float    "lat"
+    t.float    "long"
+    t.text     "sentimiento"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "usuarios", force: true do |t|
     t.text     "id_usuario"
-    t.text     "id_emisor"
     t.text     "nombre"
-    t.text     "email"
     t.integer  "contador_seguidores"
-    t.integer  "contador_estado"
-    t.integer  "edad"
+    t.text     "descripcion"
+    t.text     "nick"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

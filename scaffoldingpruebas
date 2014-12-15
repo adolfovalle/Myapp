@@ -1,4 +1,11 @@
-rails g scaffold usuario id_usuario:text nombre:text contador_seguidores:integer
+rails g scaffold tweet id_tweet:text mensaje:text retweet_contador:integer fecha:timestamp lat:float long:float sentimiento:text
 
-rails g scaffold tweet id_tweet:text mensaje:text contador_retweet:integer fecha:timestap
+rails g scaffold palabra palabrac:text intencionp:text
 
+rails g scaffold palabras_tweets --force-plural -id
+
+rails g scaffold hastag etiqueta:text intencion:text
+
+rails g scaffold usuario id_usuario:text nombre:text contador_seguidores:integer descripcion:text nick:text
+
+rails g scaffold hastags_tweets --force-plural -id

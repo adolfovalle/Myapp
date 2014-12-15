@@ -1,0 +1,38 @@
+<%- model_class = Hastag -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:etiqueta) %></th>
+      <th><%= model_class.human_attribute_name(:intencion) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @hastags.each do |hastag| %>
+      <tr>
+        <td><%= link_to hastag.id, hastag_path(hastag) %></td>
+        <td><%= hastag.etiqueta %></td>
+        <td><%= hastag.intencion %></td>
+        <td><%=l hastag.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_hastag_path(hastag), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      hastag_path(hastag),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_hastag_path,
+            :class => 'btn btn-primary' %>

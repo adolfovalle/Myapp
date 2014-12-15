@@ -1,32 +1,170 @@
+#encoding: utf-8
 class WelcomeController < ApplicationController
-
+#encoding: utf-8
 def index
   	require 'twitter'
 	client = Twitter::REST::Client.new do |config|
-  		config.consumer_key        = "svmHMBBvtf5WSz8Jvu54Ouy23"
-  		config.consumer_secret     = "z6HY0kZjuFsyNo8XLT0RXT6zwIQzorlcEkGjR8kfegHAAaUoMH"
-  		config.access_token        = "2891572623-whlhrrDQbyVWbNimTZ6rR8hVRHV245rNSa0N0ST"
-  		config.access_token_secret = "m96nlSAT5BRyxbk3oXR8Pef49lQINiWk4Yr9O3a2ughpJ"
+  		config.consumer_key        = "QSrYAxV7qr7vPv6hU1d8XmJac"
+  		config.consumer_secret     =  "fSPT90U1j3j86A4dYlp327uLdyEWsFJgLGpEPitXmUz9cCHchr"
+  		config.access_token        = "2907187125-BuAVQBlsfGknAv4K4WhfDtmHDuE7vr1GNkZc5JZ"
+  		config.access_token_secret = "ojMaTpGCK3S2O6r4LbjTbsaePsZtu9op5Dr9Arf6OLv7x"
 	end
-	topics = ["Aborto", "AbortoLegal", "SíAlAborto", "YoDecido", "ProAborto", "abortoChile", "AbortoTerapéutico", "AbortoTerapéuticoYA", "NoAlAborto", 			  "MarchaPorLaVida", "SíALaVida", "Noalaborto"]
-	topics2 = ["Batman", "USA", "Hola"]
+	topics = ["Aborto", "AbortoLegal", "SíAlAborto", "ProAborto", "abortoChile", "AbortoTerapéutico", "AbortoTerapéuticoYA", "NoAlAborto", 			  "MarchaPorLaVida", "SíALaVida", "Noalaborto"]
+	#topics2 = ["Batman", "USA", "Hola"]
 	contador = 0
 	@tweets = []	
-	a = ["perro","batman"]
-	a.each do |i|
-		client.search(i, :result_type => "recent").take(20).collect do |object|
+	#a = ["perro","batman"]
+	topics.each do |i|
+		client.search("#{i} -rt", :result_type => "recent").take(5).collect do |object|
+#"svmHMBBvtf5WSz8Jvu54Ouy23"
+#"z6HY0kZjuFsyNo8XLT0RXT6zwIQzorlcEkGjR8kfegHAAaUoMH"
+#"2891572623-whlhrrDQbyVWbNimTZ6rR8hVRHV245rNSa0N0ST"
+#"m96nlSAT5BRyxbk3oXR8Pef49lQINiWk4Yr9O3a2ughpJ"
+			#chileno = object.user.location.downcase.include?"chile"
+			if object.user.lang != "es" 
+		    	  next
+	 		  end
 			if object != nil
-				contador += 1		
+				contador += 1	
+				conta=0	
+				connota = "Neutro"
 				puts object.text if object.is_a?(Twitter::Tweet)
 		  		puts contador 
 				@tweets.push contador
 				@tweets.push object.text if object.is_a?(Twitter::Tweet)
 			  	@tweets.push object.user.name if object.is_a?(Twitter::Tweet)
-				@tweets.push "\n Nombre cuenta (Nick):#{object.user.screen_name}\n"
-				@tweets.image_tag("http://img1.wikia.nocookie.net/__cb20111228065136/simpsons/images/1/11/Twitter_bird_icon.png", :size => "10x10", :crop => :fill)  
+				@tweets.push "\n Nick:  #{object.user.screen_name}\n"
+				@tweets.push "\n Latitud:  #{object.geo.lat}\n"
+				@tweets.push "\n Longitud:  #{object.geo.long}\n"
+				@tweets.push "\n Localización:  #{object.user.location}\n"
+				@tweets.push "\n "
+				@tweets.push "\n "
+
+
+
+##HASHTAGGGG
+####aux_tweet = Tweet.find_by_id_tweet(object.id.to_s)
+		hash = Hastag.all
+		hash.each do |x|
+		####@tweets.push "\n conta= #{conta}\n"
+		aux =x.etiqueta.downcase
+               	puts"######################################################"
+		puts aux
+			object.hashtags.each do |hastag|
+			puts hastag.text.downcase
+                	puts hastag.text.downcase.include?aux
+               		puts"######################################################"
+				####@tweets.push aux
+				####@tweets.push hastag.text.downcase
+				if hastag.text.downcase.include?aux
+                   			tag=Hastag.find_by_etiqueta(x.etiqueta)
+					###@tweets.push "\n AGREGA HASHTAG\n"
+                   			
+					if conta==0
+						if x.intencion != "antiaborto"
+						connota= "Aprobacion"
+						conta= 1
+						###@tweets.push "\n connota= #{connota}\n"
+						else
+						connota= "Desaprobacion"
+						conta= 1
+						###@tweets.push "\n connota= #{connota}\n"
+						end
+					end
+				end
 			end
 		end
-	end
+###@tweets.push "\ntweet connota= #{connota}\n"	
+if Tweet.exists?(:id_tweet => object.id.to_s)== true
+next
+else	
+@tweet = Tweet.create({
+
+			#TWEET
+		
+			:mensaje=>object.text ,
+			:retweet_contador=>object.retweet_count,
+			:fecha=>object.created_at,
+			:lat=>object.geo.lat.to_s,
+			:long=>object.geo.long.to_s,
+			:id_tweet=>object.id,
+			:sentimiento=>connota
+
+		});
+end
+		hash = Hastag.all
+		hash.each do |x|
+		####@tweets.push "\n conta= #{conta}\n"
+		aux =x.etiqueta.downcase
+               	puts"######################################################"
+		puts aux
+			object.hashtags.each do |hastag|
+			puts hastag.text.downcase
+                	puts hastag.text.downcase.include?aux
+               		puts"######################################################"
+				####@tweets.push aux
+				####@tweets.push hastag.text.downcase
+				if hastag.text.downcase.include?aux
+                   			tag=Hastag.find_by_etiqueta(x.etiqueta)
+					###@tweets.push "\n AGREGA HASHTAG\n"
+					@tweet.hastags << tag               			
+					
+				end
+			end
+		end
+#####PALABRAAAA
+
+
+		pal = Palabra.all
+		pal.each do |p|
+		aup =p.palabrac.downcase
+		puts"######################################################"
+		puts aup
+		puts object.text.downcase
+		puts object.text.downcase.include?aup
+		puts"######################################################"
+				if object.text.downcase.include?aup
+                   		pc=Palabra.find_by_palabrac(p.palabrac)
+                   		@tweet.palabras << pc
+				end
+		end
+#HACERPENDIENTE
+
+
+
+if Usuario.exists?(:id_usuario => object.user.id.to_s)== true
+
+aux_usuario=Usuario.find_by_id_usuario(object.user.id.to_s)
+aux_usuario.tweets << @tweet
+			
+		else
+			if object.user.name.nil?
+				aux_name = " "
+			else
+				aux_name = object.user.name
+			end
+			if object.user.description.nil?
+				aux_description = " "
+			else
+				aux_description = object.user.description
+			end
+			@usuario = Usuario.create({
+				#USUARIO
+				:id_usuario=> object.user.id.to_s,
+				:nombre => aux_name ,  
+				:nick  => object.user.screen_name ,
+				:descripcion => aux_description,
+				:contador_seguidores =>object.user.followers_count
+			});
+			#@usuario.save();
+			aux_usuario = Usuario.find_by_id_usuario(object.user.id.to_s)
+			aux_usuario.tweets << @tweet
+		end
+
+
+    end
+   end
   end
+ end
 end
 

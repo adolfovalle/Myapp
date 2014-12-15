@@ -1,0 +1,5 @@
+class TweetController < ApplicationController
+layout 'index'
+  def view
+  end
+end

@@ -1,0 +1,53 @@
+<h1>Estadísticas</h1>
+<!--<p>Find me in app/views/estadisticas/ver.html.erb</p>>
+<!--%= image_tag("http://2.bp.blogspot.com/-lzp5dDtFZjQ/UwrzngTkHrI/AAAAAAAAAR0/yGcUwgYpRhY/s1600/A+FONT.png", :size => "100x100", :crop => :fill)  %>-->
+<%= pie_chart Tweet.top(:retweet_contador, 10) %>
+ <center><p style="color:dodgerblue">Cantidades de retweets.</p></center> 
+<br>
+<br>
+<%=  column_chart Tweet.group_by_hour_of_day(:fecha, format: "%l %P").count %>
+ <center><p style="color:dodgerblue">Horas con mayor trafico de tweets en el ámbito.</p></center> 
+<br>
+<br>
+<%= pie_chart Tweet.group(:sentimiento).count %>
+ <center><p style="color:dodgerblue">Porcentaje de sentimientos detectados.</p></center> 
+<br>
+<br>
+<%= bar_chart Tweet.group(:sentimiento).sum(:retweet_contador) %>
+ <center><p style="color:dodgerblue">Cantidad de retweet por sentimiento.</p></center> 
+<br>
+<br>
+<%= bar_chart Usuario.joins(:tweets).group(:sentimiento).count %>
+ <center><p style="color:dodgerblue">Sentimiento por usuario.</p></center> 
+<br>
+<br>
+<%= column_chart Hastag.joins(:hastags_tweets).group(:etiqueta).count %>
+ <center><p style="color:dodgerblue">Uso de hashtags.</p></center> 
+<br>
+<br>
+<%= column_chart Palabra.joins(:palabras_tweets).group(:palabrac).count %>
+ <center><p style="color:dodgerblue">Uso de Palabras.</p></center> 
+<br>
+<br>
+<%= bar_chart Hastag.joins(:hastags_tweets).group(:intencion).count %>
+ <center><p style="color:dodgerblue">Intención de hashtags.</p></center> 
+<br>
+<br>
+<%= bar_chart Palabra.joins(:palabras_tweets).group(:intencionp).count %>
+ <center><p style="color:dodgerblue">Intención de palabras.</p></center> 
+<br>
+<br>
+<%= pie_chart Usuario.top(:contador_seguidores, 10) %>
+<center><p style="color:dodgerblue">Top 10 usuarios con más seguidores.</p></center> 
+<br>
+<br>
+<%= pie_chart Usuario.top(:contador_seguidores, 10).joins(:tweets).group(:sentimiento)%>
+<center><p style="color:dodgerblue">Top 10 usuarios con más seguidores.</p></center>
+<br>
+<br> 
+<%= line_chart Usuario.joins(:tweets).group_by_day(:fecha).count %>
+<center><p style="color:dodgerblue">Actividad de usuarios sobre el tema.</p></center> 
+<br>
+<br>
+
+

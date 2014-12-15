@@ -1,0 +1,2 @@
+module HastagsTweetsHelper
+end

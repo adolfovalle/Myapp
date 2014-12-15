@@ -1,0 +1,38 @@
+<%= form_for @palabra, :html => { :class => "form-horizontal palabra" } do |f| %>
+
+    <% if @palabra.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@palabra.errors.count, "error") %> prohibited this palabra from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @palabra.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :palabrac, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :palabrac, :class => 'form-control' %>
+    </div>
+    <%= error_span(@palabra[:palabrac]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :intencionp, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :intencionp, :class => 'form-control' %>
+    </div>
+    <%= error_span(@palabra[:intencionp]) %>
+  </div>
+<br>
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            palabras_path, :class => 'btn btn-default' %>
+
+<% end %>

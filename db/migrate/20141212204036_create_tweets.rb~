@@ -1,0 +1,12 @@
+class CreateTweets < ActiveRecord::Migration
+  def change
+    create_table :tweets do |t|
+      t.text :id_tweet
+      t.text :mensaje
+      t.integer :retweet_contador
+      t.timestap :fecha
+
+      t.timestamps
+    end
+  end
+end
