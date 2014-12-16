@@ -1,28 +1,11 @@
-== README
+-Usar bundle install
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+-Crear la base de datos con migrate
 
-Things you may want to cover:
+-Poblar los Hashtags y Palabras, para poder realizar el analisis de sentimientos, y varias otras funciones
 
-* Ruby version
+-Luego realizar búsquedas para poblar la base de datos de tweets y usuarios
 
-* System dependencies
+-En Tweets->Show se puede encontrar la geolocalización, si no carga el mapa, recargar la página
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+-Los mapas y las estadísticas necesitan internet
