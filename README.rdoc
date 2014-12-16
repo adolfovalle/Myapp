@@ -2,7 +2,9 @@
 
 -Crear la base de datos con migrate
 
--Poblar los Hashtags y Palabras, para poder realizar el analisis de sentimientos, y varias otras funciones
+-Poblar los Hashtags y Palabras, para poder realizar el analisis de sentimientos, y varias otras funciones, 
+su intención debe ser proaborto, terapeutico o antiaborto, los hashtag y las búsquedas estan definidos en el controlador
+welcome_controller.rb en app/controllers/
 
 -Luego realizar búsquedas para poblar la base de datos de tweets y usuarios
 
